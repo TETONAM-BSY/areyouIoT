@@ -1,0 +1,70 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "access": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": false,
+        ".validate": "newData.isBoolean()"
+      }
+    },
+
+    "farm": {
+      ".read": "auth != null && root.child('access').child(auth.uid).val() === true",
+      ".write": "auth != null && root.child('access').child(auth.uid).val() === true",
+
+      "modules": {
+        "$mod": {
+          ".validate": "$mod.matches(/^module_[0-9]+$/)",
+
+          "auto_mode": { ".validate": "newData.isBoolean()" },
+
+          "actuators": {
+            "$act": {
+              ".validate": "newData.isBoolean() || (newData.isNumber() && newData.val() >= 0 && newData.val() <= 100)"
+            }
+          },
+
+          "control_rules": {
+            "$rule": {
+              ".validate": "newData.hasChildren(['enabled', 'target_min', 'target_max', 'cooldown_sec']) && newData.child('target_min').val() < newData.child('target_max').val()",
+              "enabled":      { ".validate": "newData.isBoolean()" },
+              "target_min":   { ".validate": "newData.isNumber()" },
+              "target_max":   { ".validate": "newData.isNumber()" },
+              "cooldown_sec": { ".validate": "newData.isNumber() && newData.val() >= 0" },
+              "$other":       { ".validate": false }
+            }
+          },
+
+          "meta": {
+            "name":       { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 40" },
+            "fw_version": { ".validate": "newData.isString() && newData.val().length <= 20" },
+            "status":     { ".validate": "newData.isString() && (newData.val() === 'online' || newData.val() === 'offline')" },
+            "$other":     { ".validate": false }
+          },
+
+          "sensors": {
+            "updated_at": { ".validate": "newData.isNumber() && newData.val() >= 0" },
+            "$sensor":    { ".validate": "newData.isNumber()" }
+          },
+
+          "config": {
+            "water_tank": {
+              ".validate": "newData.hasChildren(['empty_cm', 'full_cm']) && newData.child('empty_cm').val() > newData.child('full_cm').val()",
+              "empty_cm": { ".validate": "newData.isNumber() && newData.val() > 0" },
+              "full_cm":  { ".validate": "newData.isNumber() && newData.val() >= 0" },
+              "$other":   { ".validate": false }
+            },
+            "$other": { ".validate": false }
+          },
+
+          "$other": { ".validate": false }
+        }
+      },
+
+      "$other": { ".validate": false }
+    }
+  }
+}
