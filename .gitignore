@@ -1,0 +1,20 @@
+# ── 비밀 정보 (절대 커밋 금지) ──
+esp32/**/secrets.h
+*.serviceAccount.json
+serviceAccountKey*.json
+.env
+.env.*
+
+# ── Firebase CLI ──
+.firebase/
+firebase-debug.log
+database-debug.log
+
+# ── Editor / OS ──
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ── Node ──
+node_modules/

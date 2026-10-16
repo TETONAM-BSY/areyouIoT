@@ -1,0 +1,118 @@
+{
+  "modules": {
+    "module_01": {
+      "actuators": {
+        "fan": false,
+        "fan_speed": 73,
+        "heater": false,
+        "led": false,
+        "led_brightness": 71,
+        "pump": false
+      },
+      "auto_mode": false,
+      "control_rules": {
+        "air_humidity": {
+          "cooldown_sec": 180,
+          "enabled": true,
+          "target_max": 80,
+          "target_min": 60
+        },
+        "illuminance": {
+          "cooldown_sec": 60,
+          "enabled": true,
+          "target_max": 800,
+          "target_min": 200
+        },
+        "soil_moisture": {
+          "cooldown_sec": 600,
+          "enabled": true,
+          "target_max": 70,
+          "target_min": 40
+        },
+        "temperature": {
+          "cooldown_sec": 300,
+          "enabled": true,
+          "target_max": 24,
+          "target_min": 18
+        }
+      },
+      "meta": {
+        "fw_version": "1.0.0",
+        "name": "상추 1번",
+        "status": "offline"
+      },
+      "sensors": {
+        "air_humidity": 25,
+        "illuminance": 100,
+        "soil_moisture": 0,
+        "temperature": 0,
+        "water_level": 0,
+        "water_distance_cm": 0,
+        "updated_at": 0
+      },
+      "config": {
+        "water_tank": {
+          "empty_cm": 30,
+          "full_cm": 5
+        }
+      }
+    },
+    "module_02": {
+      "actuators": {
+        "fan": false,
+        "fan_speed": 80,
+        "heater": false,
+        "led": false,
+        "led_brightness": 100,
+        "pump": false
+      },
+      "auto_mode": true,
+      "control_rules": {
+        "air_humidity": {
+          "cooldown_sec": 180,
+          "enabled": true,
+          "target_max": 80,
+          "target_min": 60
+        },
+        "illuminance": {
+          "cooldown_sec": 60,
+          "enabled": true,
+          "target_max": 800,
+          "target_min": 200
+        },
+        "soil_moisture": {
+          "cooldown_sec": 600,
+          "enabled": true,
+          "target_max": 70,
+          "target_min": 40
+        },
+        "temperature": {
+          "cooldown_sec": 300,
+          "enabled": true,
+          "target_max": 24,
+          "target_min": 18
+        }
+      },
+      "meta": {
+        "fw_version": "1.0.0",
+        "name": "상추 2번",
+        "status": "offline"
+      },
+      "sensors": {
+        "air_humidity": 0,
+        "illuminance": 0,
+        "soil_moisture": 0,
+        "temperature": 0,
+        "water_level": 0,
+        "water_distance_cm": 0,
+        "updated_at": 0
+      },
+      "config": {
+        "water_tank": {
+          "empty_cm": 30,
+          "full_cm": 5
+        }
+      }
+    }
+  }
+}
